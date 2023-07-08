@@ -1,0 +1,197 @@
+<!--*************************************************
+Windows 10 Answer File Generator
+Created using Windows AFG found at:
+;http://www.windowsafg.com
+
+Installation Notes
+Location: 
+Notes: Enter your comments here...
+**************************************************-->
+
+<?xml version="1.0" encoding="utf-8"?>
+<unattend xmlns="urn:schemas-microsoft-com:unattend">
+<settings pass="windowsPE">
+<component name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="x86" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<SetupUILanguage>
+<UILanguage>de-DE</UILanguage>
+</SetupUILanguage>
+<InputLocale>0407:00000407</InputLocale>
+<SystemLocale>de-DE</SystemLocale>
+<UILanguage>de-DE</UILanguage>
+<UILanguageFallback>de-DE</UILanguageFallback>
+<UserLocale>de-DE</UserLocale>
+</component>
+<component name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<SetupUILanguage>
+<UILanguage>de-DE</UILanguage>
+</SetupUILanguage>
+<InputLocale>0407:00000407</InputLocale>
+<SystemLocale>de-DE</SystemLocale>
+<UILanguage>de-DE</UILanguage>
+<UILanguageFallback>de-DE</UILanguageFallback>
+<UserLocale>de-DE</UserLocale>
+</component>
+<component name="Microsoft-Windows-PnPCustomizationsWinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<DriverPaths>
+<PathAndCredentials wcm:action="add" wcm:keyValue="1">
+<Path>D:\virtio\amd64\w10\</Path>
+</PathAndCredentials>
+<PathAndCredentials wcm:action="add" wcm:keyValue="1">
+<Path>D:\virtio\vioscsi\w10\amd64\</Path>
+</PathAndCredentials>
+<PathAndCredentials wcm:action="add" wcm:keyValue="1">
+<Path>D:\virtio\viostor\w10\amd64\</Path>
+</PathAndCredentials>
+<PathAndCredentials wcm:action="add" wcm:keyValue="1">
+<Path>D:\virtio\Balloon\w10\amd64\</Path>
+</PathAndCredentials>
+<PathAndCredentials wcm:action="add" wcm:keyValue="1">
+<Path>D:\virtio\NetKVM\w10\amd64\</Path>
+</PathAndCredentials>
+<PathAndCredentials wcm:action="add" wcm:keyValue="1">
+<Path>D:\virtio\viorng\w10\amd64\</Path>
+</PathAndCredentials>
+<PathAndCredentials wcm:action="add" wcm:keyValue="1">
+<Path>D:\virtio\vioserial\w10\amd64\</Path>
+</PathAndCredentials>
+<PathAndCredentials wcm:action="add" wcm:keyValue="1">
+<Path>D:\virtio\smbus\w10\amd64\</Path>
+</PathAndCredentials>
+<PathAndCredentials wcm:action="add" wcm:keyValue="1">
+<Path>D:\virtio\pvpanic\w10\amd64\</Path>
+</PathAndCredentials>
+</DriverPaths>
+</component>
+<component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<RunSynchronous>
+<RunSynchronousCommand wcm:action="add">
+<Order>1</Order>
+<Path>
+%windir%\system32\reg.exe add "HKLM\SYSTEM\Setup\LabConfig" /v BypassTPMCheck /t REG_DWORD /d 1 /f
+</Path>
+</RunSynchronousCommand>
+<RunSynchronousCommand wcm:action="add">
+<Order>2</Order>
+<Path>
+%windir%\system32\reg.exe add "HKLM\SYSTEM\Setup\LabConfig" /v BypassSecureBootCheck /t REG_DWORD /d 1 /f
+</Path>
+</RunSynchronousCommand>
+<RunSynchronousCommand wcm:action="add">
+<Order>3</Order>
+<Path>
+%windir%\system32\reg.exe add "HKLM\SYSTEM\Setup\LabConfig" /v BypassStorageCheck /t REG_DWORD /d 1 /f
+</Path>
+</RunSynchronousCommand>
+<RunSynchronousCommand wcm:action="add">
+<Order>4</Order>
+<Path>
+%windir%\system32\reg.exe add "HKLM\SYSTEM\Setup\LabConfig" /v BypassRAMCheck /t REG_DWORD /d 1 /f
+</Path>
+</RunSynchronousCommand>
+</RunSynchronous>
+<UserData>
+<AcceptEula>true</AcceptEula>
+<FullName>mps</FullName>
+<Organization></Organization>
+<ProductKey>
+<Key>W269N-WFGWX-YVC9B-4J6C9-T83GX</Key>
+</ProductKey>
+</UserData>
+</component>
+</settings>
+<settings pass="offlineServicing">
+<component name="Microsoft-Windows-LUA-Settings" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<EnableLUA>false</EnableLUA>
+</component>
+</settings>
+<settings pass="generalize">
+<component name="Microsoft-Windows-Security-SPP" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<SkipRearm>1</SkipRearm>
+</component>
+</settings>
+<settings pass="specialize">
+<component name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<InputLocale>0407:00000407</InputLocale>
+<SystemLocale>de-DE</SystemLocale>
+<UILanguage>de-DE</UILanguage>
+<UILanguageFallback>de-DE</UILanguageFallback>
+<UserLocale>de-DE</UserLocale>
+</component>
+<component name="Microsoft-Windows-Security-SPP-UX" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<SkipAutoActivation>true</SkipAutoActivation>
+</component>
+<component name="Microsoft-Windows-SQMApi" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<CEIPEnabled>0</CEIPEnabled>
+</component>
+<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ComputerName>-PC</ComputerName>
+<ProductKey>W269N-WFGWX-YVC9B-4J6C9-T83GX</ProductKey>
+</component>
+</settings>
+<settings pass="oobeSystem">
+<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<AutoLogon>
+<Password>
+<Value>mps</Value>
+<PlainText>true</PlainText>
+</Password>
+<Enabled>true</Enabled>
+<Username>mps</Username>
+</AutoLogon>
+<OOBE>
+<HideEULAPage>true</HideEULAPage>
+<HideOEMRegistrationScreen>true</HideOEMRegistrationScreen>
+<HideOnlineAccountScreens>true</HideOnlineAccountScreens>
+<HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
+<NetworkLocation>Home</NetworkLocation>
+<SkipUserOOBE>true</SkipUserOOBE>
+<SkipMachineOOBE>true</SkipMachineOOBE>
+<ProtectYourPC>1</ProtectYourPC>
+</OOBE>
+<UserAccounts>
+<LocalAccounts>
+<LocalAccount wcm:action="add">
+<Password>
+<Value>mps</Value>
+<PlainText>true</PlainText>
+</Password>
+<Description></Description>
+<DisplayName>mps</DisplayName>
+<Group>Administrators</Group>
+<Name>mps</Name>
+</LocalAccount>
+</LocalAccounts>
+</UserAccounts>
+<RegisteredOrganization></RegisteredOrganization>
+<RegisteredOwner>mps</RegisteredOwner>
+<DisableAutoDaylightTimeSet>false</DisableAutoDaylightTimeSet>
+<FirstLogonCommands>
+<SynchronousCommand wcm:action="add">
+<Description>Control Panel View</Description>
+<Order>1</Order>
+<CommandLine>reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\ControlPanel" /v StartupPage /t REG_DWORD /d 1 /f</CommandLine>
+<RequiresUserInput>true</RequiresUserInput>
+</SynchronousCommand>
+<SynchronousCommand wcm:action="add">
+<Order>2</Order>
+<Description>Control Panel Icon Size</Description>
+<RequiresUserInput>false</RequiresUserInput>
+<CommandLine>reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\ControlPanel" /v AllItemsIconView /t REG_DWORD /d 0 /f</CommandLine>
+</SynchronousCommand>
+<SynchronousCommand wcm:action="add">
+<Order>3</Order>
+<RequiresUserInput>false</RequiresUserInput>
+<CommandLine>cmd /C wmic useraccount where name="mps" set PasswordExpires=false</CommandLine>
+<Description>Password Never Expires</Description>
+</SynchronousCommand>
+<SynchronousCommand wcm:action="add">
+<Order>4</Order>
+<RequiresUserInput>true</RequiresUserInput>
+<CommandLine>D:\postinstall\postinstall.bat</CommandLine>
+<Description>Install common tools</Description>
+</SynchronousCommand>
+</FirstLogonCommands>
+<TimeZone>W. Europe Standard Time</TimeZone>
+</component>
+</settings>
+</unattend>
