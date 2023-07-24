@@ -25,7 +25,7 @@ usage() {
     exit 1
 }
 
-while getopts ":u:p:d:i:n:" o; do
+while getopts ":u:p:o:i:n:" o; do
     case "${o}" in
         u)
             NEWUSER=${OPTARG}
@@ -33,8 +33,8 @@ while getopts ":u:p:d:i:n:" o; do
         p)
             NEWPASS=${OPTARG}
             ;;
-        d)
-            OUTFOLDER=${OPTARG}
+        o)
+            ISOFOLDER=${OPTARG}
             ;;
         i)
             INCFOLDER=${OPTARG}
@@ -64,7 +64,7 @@ echo "ISO  = ${OUTFILE}"
 
 # install
 install(){
-    sudo -E apt --yes install rsync genisoimage isolinux
+    sudo -E apt --yes install rsync genisoimage isolinux qemu-kvm
 }
 # clean
 clean(){
@@ -125,7 +125,7 @@ copyaddons(){
 
 # Generate iso
 geniso(){
-mkdir -p $ISOFOLDER
+mkdir -p "$ISOFOLDER"
 mkisofs  -allow-limited-size \
     -V "$VOLNAME" \
     -no-emul-boot \
@@ -138,8 +138,8 @@ mkisofs  -allow-limited-size \
     -D \
     -N \
     -relaxed-filenames \
-    -o $OUTFILE.iso \
-    $INFOLDER
+    -o "$OUTFILE.iso" \
+    "$INFOLDER"
 }
 
 clean

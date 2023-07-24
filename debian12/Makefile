@@ -4,12 +4,12 @@
 MPS_USER ?=mps
 MPS_PASS ?=mps
 TESTSIZE ?=32
-VMSSHPORT:=5555
+ISOFOLDER ?=iso
+VMSSHPORT:=5556
 SSHKEY:=config/ssh/id_rsa
-ISOFOLDER := iso
 OUTFOLDER := out
 ISONAME:=debian12-amd64-unattend
-TESTIMAGE=$(ISOFOLDER)/$(ISONAME).qcow2
+TESTIMAGE=$(OUTFOLDER)/$(ISONAME).qcow2
 PIDFILE:=$(ISOFOLDER)/$(ISONAME).pid
 
 all: | rebuild disk start
@@ -20,7 +20,8 @@ clean-all: clean
 	-rm -rf $(TESTIMAGE) $(ISOFOLDER)
 
 build:
-	./generate-iso.bash -u $(MPS_USER) -p $(MPS_USER) -n $(ISONAME)
+	./generate-iso.bash -u $(MPS_USER) -p $(MPS_USER) \
+		-o $(ISOFOLDER) -n $(ISONAME)
 
 disk:
 	rm -rf $(TESTIMAGE)

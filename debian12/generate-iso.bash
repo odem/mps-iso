@@ -23,7 +23,7 @@ usage() {
     exit 1
 }
 
-while getopts ":u:p:d:i:n:" o; do
+while getopts ":u:p:o:i:n:" o; do
     case "${o}" in
         u)
             NEWUSER=${OPTARG}
@@ -31,8 +31,8 @@ while getopts ":u:p:d:i:n:" o; do
         p)
             NEWPASS=${OPTARG}
             ;;
-        d)
-            OUTFOLDER=${OPTARG}
+        o)
+            ISOFOLDER=${OPTARG}
             ;;
         i)
             INCFOLDER=${OPTARG}
@@ -60,7 +60,8 @@ echo "ISO  = ${OUTFILE}"
 
 # install
 install(){
-    sudo -E apt --yes install rsync syslinux syslinux-utils xorriso isolinux
+    sudo -E apt --yes install syslinux syslinux-utils xorriso isolinux \
+        rsync qemu-kvm
 }
 # clean
 clean(){
@@ -137,7 +138,7 @@ irmod(){
     sudo chown root:root "$MODFOLDER"/preseed.cfg
     sudo chmod o+w "$INFOLDER"/install.amd/initrd.gz
     cd "$MODFOLDER" || exit 1
-    find . | cpio -H newc --create | gzip -9 \
+    find . | sudo cpio -H newc --create | gzip -9 \
         > "$BASEDIR"/install.amd/initrd.gz
     cd - || exit 1
     sudo chmod o-w "$INFOLDER"/install.amd/initrd.gz

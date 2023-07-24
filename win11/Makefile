@@ -4,13 +4,13 @@
 MPS_USER ?=mps
 MPS_PASS ?=mps
 TESTSIZE ?=64
+ISOFOLDER?=iso
 VMSSHPORT:=5555
 SSHKEY:=config/ssh/id_rsa
-ISOFOLDER := iso
 OUTFOLDER := out
 ISONAME:=Win11_22H2_German_x64v2
-TESTIMAGE=$(ISOFOLDER)/$(ISONAME).qcow2
-PIDFILE:=$(ISOFOLDER)/$(ISONAME).pid
+TESTIMAGE=$(OUTFOLDER)/$(ISONAME).qcow2
+PIDFILE:=$(OUTFOLDER)/$(ISONAME).pid
 
 all: | rebuild disk start
 rebuild: | clean build
@@ -20,7 +20,8 @@ clean-all: clean
 	-rm -rf $(TESTIMAGE) $(ISOFOLDER)
 
 build:
-	./generate-iso.bash -u $(MPS_USER) -p $(MPS_USER) -n $(ISONAME)-unattend
+	./generate-iso.bash -u $(MPS_USER) -p $(MPS_USER) \
+		-o $(ISOFOLDER) -n $(ISONAME)-unattend
 
 disk:
 	rm -rf $(TESTIMAGE)
