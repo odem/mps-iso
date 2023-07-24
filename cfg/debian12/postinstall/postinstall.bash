@@ -1,9 +1,14 @@
 #!/bin/bash
 
 # SSH
-if [[ -f ssh/id_rsa.pub ]] ; then
+if [[ -f /opt/postinstall/ssh/id_rsa.pub ]] ; then
     mkdir -p /root/.ssh
-    cp ssh/id_rsa.pub /root/.ssh/authorized_keys
+    cp /opt/postinstall/ssh/id_rsa* /root/.ssh/
+    chmod 0700 /root/.ssh/id_rsa*
+    cp /opt/postinstall/ssh/id_rsa.pub /root/.ssh/authorized_keys
+fi
+if [[ -f /opt/postinstall/ssh/sshd_config ]] ; then
+    cp /opt/postinstall/ssh/sshd_config /etc/ssh/sshd_config
 fi
 
 # systemd unit
