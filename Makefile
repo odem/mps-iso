@@ -61,6 +61,7 @@ help:
 
 clean: stop
 	@./scripts/generate-win10-iso.bash -a clean
+	@./scripts/generate-win11-iso.bash -a clean
 	@./scripts/generate-debian12-iso.bash -a clean
 clean-all: clean
 	@-rm -rf $(QCOWIMAGE) $(ISOFOLDER)
@@ -70,6 +71,7 @@ install:
 	@echo "Install essentials..."
 	@./scripts/vm-run.bash -a install
 	@./scripts/generate-win10-iso.bash -a install
+	@./scripts/generate-win11-iso.bash -a install
 	@./scripts/generate-debian12-iso.bash -a install
 
 build:
